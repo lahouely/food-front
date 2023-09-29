@@ -4,6 +4,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import Button from "@modules/common/components/button"
 import OptionSelect from "@modules/products/components/option-select"
 import clsx from "clsx"
+import { values } from "lodash"
 import Link from "next/link"
 import React, { useMemo } from "react"
 import { Product } from "types/medusa"
@@ -23,7 +24,14 @@ const ProductActions: React.FC<ProductActionsProps> = ({ product }) => {
 
     return variantPrice || cheapestPrice || null
   }, [price])
-  console.log(product);/////////////
+  
+  //debug section start
+  if(product.title==="Test"){
+    console.log(product);
+    console.log(product.variants.map((value)=>value.title));
+  }
+  //debug section end
+
   return (
     <div className="flex flex-col gap-y-2">
       {product.collection && (
